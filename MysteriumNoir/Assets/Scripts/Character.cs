@@ -53,20 +53,20 @@ public class Character
         isKiller = false;
         //GameObject characterJumble = getComponent<GameObject>();
         //will generate a backstory once Story class is implemented
-    
+        //will generate key info once Story class is implemented
 
 
 
 
-        AIArchetype = 
-        "[-----------------------------------------------------------------------]"
+        AIArchetype = "[-----------------------------------------------------------------------]"
          + name + " is a " + singleWordPersonality + " " + job + 
         ". They are " + age + " years old, " + gender + 
         ". On a scale of 0 to 10 where 0 is no trust and 10 is complete and total trust in the detective " + name +" is a " + trust + "/10" 
-        +" they are " + pessimism*100 + "% pessimistic. With 0% being an optomist and 100% being a pessimist." +
-         "They also have a fear level of " + fear*100 + "%. With 100 percent being total panic."
+        +" they are " + pessimism*100 + "% pessimistic. With 0% being an optimist and 100% being a pessimist." +
+         "They also have a fear level of " + fear*100 + "%. With 100% being total panic."
         + " Thier recollection of the events: " + backStory +
         "[-----------------------------------------------------------------------]";
+        foreach(string info in keyInfo) { AIArchetype += "They know: " + info + ";"; }
         if(isKiller) AIArchetype += " " + name + " is the killer.";
         else AIArchetype += " " + name + " is not the killer.";
         
