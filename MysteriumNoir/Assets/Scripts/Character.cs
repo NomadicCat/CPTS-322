@@ -30,7 +30,7 @@ public class Character
 
 
     //member functions
-    public string sendToAI(string text) {return "";}
+    public string sendToAI(string text) {return "TODO";}
 
 
 
@@ -52,7 +52,8 @@ public class Character
         singleWordPersonality = responseParts[4].Split(':')[1].Trim();
         isKiller = false;
         //GameObject characterJumble = getComponent<GameObject>();
-        
+        //will generate a backstory once Story class is implemented
+    
 
 
 
