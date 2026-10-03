@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using UnityEngine;
 
 public class Character
@@ -23,11 +22,10 @@ public class Character
 
     public List<string> keyInfo = new List<string>();
 
-    //public Story story;
     //TODO
     public string job;
     public bool isKiller;
-
+    public string actualStory;
 
     //member functions
     public string sendToAI(string text) {return "TODO";}
@@ -39,7 +37,7 @@ public class Character
     //public GameObject characterJumble;
     public Character()
     {
-        backStory = "";
+        
         trust = 0;
         pessimism = Random.Range(0f, 1f);
         fear = Random.Range(0f, 1f);
@@ -54,8 +52,7 @@ public class Character
         //GameObject characterJumble = getComponent<GameObject>();
         //will generate a backstory once Story class is implemented
         //will generate key info once Story class is implemented
-
-
+        backStory = sendToAI("Generate a short (less than 300 word) point of view story for the character named " + name + ". Who is a " + singleWordPersonality + " " + job + ". Based on the events that occurred. Here are those actual events: " + actualStory);
 
 
         AIArchetype = "[-----------------------------------------------------------------------]"
