@@ -16,6 +16,6 @@ public class Story
         storyText = GenerateStoryText();
         foreach(Character character in characters) character.actualStory = storyText;
     }
-    public string GenerateStoryText(){storyText = "TODO"; return storyText;}
+    public string GenerateStoryText(){string storyText = "TODO"; return storyText;}
 
 }
