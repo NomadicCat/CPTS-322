@@ -64,12 +64,11 @@ public class Character
         ". On a scale of 0 to 10 where 0 is no trust and 10 is complete and total trust in the detective " + name +" is a " + trust + "/10" 
         +" they are " + pessimism*100 + "% pessimistic. With 0% being an optimist and 100% being a pessimist." +
          "They also have a fear level of " + fear*100 + "%. With 100% being total panic."
-        + " Thier recollection of the events: " + backStory +
-        "[-----------------------------------------------------------------------]";
+        + " Their recollection of the events: " + backStory + " ";
         foreach(string info in keyInfo) { AIArchetype += "They know: " + info + ";"; }
         if(isKiller) AIArchetype += " " + name + " is the killer.";
         else AIArchetype += " " + name + " is not the killer.";
-        
+        AIArchetype += "[-----------------------------------------------------------------------]";
     }
 
 }
