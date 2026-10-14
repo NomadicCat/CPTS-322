@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/level-dialogue.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/character-ui.unity
+    guid: af11f6aff048f2542b269572a6e7fab7
   m_configObjects: {}
