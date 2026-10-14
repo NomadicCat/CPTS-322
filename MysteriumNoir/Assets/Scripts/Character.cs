@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character
+
+public class Character : MonoBehaviour
 {
     public string name;
     public int age;
@@ -35,13 +36,15 @@ public class Character
 
 
     //public GameObject characterJumble;
-    public Character()
+    
+    
+    public void Start()
     {
-        
         trust = 0;
         pessimism = Random.Range(0f, 1f);
         fear = Random.Range(0f, 1f);
-        string response = sendToAI("I am going to give you a template with multiple blanks, I want you to give me back a response that is an identical string with the only exception being the blanks filled in with your choices. The template is as follows: Name: ____|Gender: ____|Age: ____|Profession: ____|singleWordPersonality: ____");
+        //string response = sendToAI("I am going to give you a template with multiple blanks, I want you to give me back a response that is an identical string with the only exception being the blanks filled in with your choices. The template is as follows: Name: ____|Gender: ____|Age: ____|Profession: ____|singleWordPersonality: ____");
+        string response = "Name: Tony|Gender: Male|Age: 30|Profession: Detective|singleWordPersonality: Boring";
         string[] responseParts = response.Split('|');
         name = responseParts[0].Split(':')[1].Trim();
         gender = responseParts[1].Split(':')[1].Trim();
@@ -65,7 +68,6 @@ public class Character
         foreach(string info in keyInfo) { AIArchetype += "They know: " + info + ";"; }
         if(isKiller) AIArchetype += " " + name + " is the killer.";
         else AIArchetype += " " + name + " is not the killer.";
-        AIArchetype += "[-----------------------------------------------------------------------]";
+        AIArchetype += "[-----------------------------------------------------------]";
     }
-
 }
