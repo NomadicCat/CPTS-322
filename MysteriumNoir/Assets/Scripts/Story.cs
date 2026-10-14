@@ -17,5 +17,4 @@ public class Story : MonoBehaviour
         storyText = GenerateStoryText();
         foreach(Character character in characters) character.actualStory = storyText;
     }
-    public string GenerateStoryText(){string storyText = "TODO"; return storyText;}
 }
