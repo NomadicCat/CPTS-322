@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public FaceRecipe face;
+    [SerializeField] CharacterJumble portrait;
     public string characterName;
     public int age;
     public string gender;
@@ -43,6 +45,8 @@ public class Character : MonoBehaviour
         trust = 0;
         pessimism = Random.Range(0f, 1f);
         fear = Random.Range(0f, 1f);
+        face = CharacterJumble.Roll();
+        if (portrait != null) portrait.Apply(face);
         //string response = sendToAI("I am going to give you a template with multiple blanks, I want you to give me back a response that is an identical string with the only exception being the blanks filled in with your choices. The template is as follows: Name: ____|Gender: ____|Age: ____|Profession: ____|singleWordPersonality: ____");
         string response = "Name: Tony|Gender: Male|Age: 30|Profession: Detective|singleWordPersonality: Boring";
         string[] responseParts = response.Split('|');
