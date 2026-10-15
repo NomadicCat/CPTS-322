@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public string name;
+    public string characterName;
     public int age;
     public string gender;
     public string singleWordPersonality;
@@ -46,7 +46,7 @@ public class Character : MonoBehaviour
         //string response = sendToAI("I am going to give you a template with multiple blanks, I want you to give me back a response that is an identical string with the only exception being the blanks filled in with your choices. The template is as follows: Name: ____|Gender: ____|Age: ____|Profession: ____|singleWordPersonality: ____");
         string response = "Name: Tony|Gender: Male|Age: 30|Profession: Detective|singleWordPersonality: Boring";
         string[] responseParts = response.Split('|');
-        name = responseParts[0].Split(':')[1].Trim();
+        characterName = responseParts[0].Split(':')[1].Trim();
         gender = responseParts[1].Split(':')[1].Trim();
         age = int.Parse(responseParts[2].Split(':')[1].Trim());
         job = responseParts[3].Split(':')[1].Trim();
@@ -55,19 +55,19 @@ public class Character : MonoBehaviour
         //GameObject characterJumble = getComponent<GameObject>();
         //will generate a backstory once Story class is implemented
         //will generate key info once Story class is implemented
-        backStory = sendToAI("Generate a short (less than 300 word) point of view story for the character named " + name + ". Who is a " + singleWordPersonality + " " + job + ". Based on the events that occurred. Here are those actual events: " + actualStory);
+        backStory = sendToAI("Generate a short (less than 300 word) point of view story for the character named " + characterName + ". Who is a " + singleWordPersonality + " " + job + ". Based on the events that occurred. Here are those actual events: " + actualStory);
 
 
         AIArchetype = "[-----------------------------------------------------------------------]"
-         + name + " is a " + singleWordPersonality + " " + job + 
+         + characterName + " is a " + singleWordPersonality + " " + job + 
         ". They are " + age + " years old, " + gender + 
-        ". On a scale of 0 to 10 where 0 is no trust and 10 is complete and total trust in the detective " + name +" is a " + trust + "/10" 
+        ". On a scale of 0 to 10 where 0 is no trust and 10 is complete and total trust in the detective " + characterName +" is a " + trust + "/10" 
         +" they are " + pessimism*100 + "% pessimistic. With 0% being an optimist and 100% being a pessimist." +
          "They also have a fear level of " + fear*100 + "%. With 100% being total panic."
         + " Their recollection of the events: " + backStory + " ";
         foreach(string info in keyInfo) { AIArchetype += "They know: " + info + ";"; }
-        if(isKiller) AIArchetype += " " + name + " is the killer.";
-        else AIArchetype += " " + name + " is not the killer.";
+        if(isKiller) AIArchetype += " " + characterName + " is the killer.";
+        else AIArchetype += " " + characterName + " is not the killer.";
         AIArchetype += "[-----------------------------------------------------------]";
     }
 }
