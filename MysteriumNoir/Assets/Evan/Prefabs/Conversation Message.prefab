@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7740848536189509326}
   - component: {fileID: 5253267118436910187}
   - component: {fileID: 8892250921343071573}
-  - component: {fileID: 9118291686531625244}
+  - component: {fileID: 460768017418562603}
   m_Layer: 5
   m_Name: Conversation Message
   m_TagString: Untagged
@@ -66,10 +66,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You: hello world'
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee0e40e84c29c35449e650decf2a6475, type: 2}
-  m_sharedMaterial: {fileID: 701220199515484822, guid: ee0e40e84c29c35449e650decf2a6475, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 38629f65343e7478c98e7894de78ccaa, type: 2}
+  m_sharedMaterial: {fileID: 7263689924282476308, guid: 38629f65343e7478c98e7894de78ccaa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &9118291686531625244
+--- !u!114 &460768017418562603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
