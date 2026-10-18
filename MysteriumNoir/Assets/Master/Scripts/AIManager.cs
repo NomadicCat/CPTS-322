@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -47,12 +48,13 @@ class ChatChoice
 
 public class AIManager : MonoBehaviour
 {
-    // VARIABLES AND INSTANCE ==========================================================
+    // VARIABLES ==========================================================
     #region Variables and Instance
     public static AIManager Instance;
 
-    [SerializeField] private string apiKey;
     [SerializeField] private string model;
+
+    private string apiKey;
 
     private void Awake()
     {
@@ -63,8 +65,42 @@ public class AIManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        LoadLocalAPIKey();
     }
     #endregion
+
+    // LOAD API KEY ==========================================================
+    #region Load API Key
+
+    private class APIKeyClass
+    {
+        public string apiKey;
+    }
+
+    private void LoadLocalAPIKey()
+    {
+        string path = Path.Combine(Directory.GetCurrentDirectory(),"api-key.json");
+
+        if (!File.Exists(path))
+        {
+            Debug.LogError($"Local API key file not found: {path}");
+            return;
+        }
+
+        string json = File.ReadAllText(path);
+        APIKeyClass config = JsonUtility.FromJson<APIKeyClass>(json);
+
+        if (config == null ||string.IsNullOrWhiteSpace(config.apiKey))
+        {
+            Debug.LogError("Local API key is missing.");
+            return;
+        }
+
+        apiKey = config.apiKey;
+    }
+    #endregion
+
     
     // GENERATE RESPONSE ==============================================================
     #region Generate Response
