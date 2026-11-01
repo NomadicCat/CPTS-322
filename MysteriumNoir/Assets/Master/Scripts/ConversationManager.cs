@@ -23,6 +23,9 @@ public class ConversationManager : MonoBehaviour
     [SerializeField] private GameObject messagePrefab;
     [SerializeField] private ScrollRect scrollView;
     [SerializeField] private TMP_InputField inputField;
+
+    [Header("Story")]
+    [SerializeField] private Story story;
     
     private bool isAwaitingResponse;
     private int selectedCharacter;
@@ -32,6 +35,15 @@ public class ConversationManager : MonoBehaviour
     #region Start & Update
     private void Start()
     {
+        if (story == null)
+        {
+            story = FindObjectOfType<Story>();
+        }
+        if (story == null)
+        {
+            Debug.LogWarning("ConversationManager: no Story found in scene, creating one.");
+            story = new GameObject("Story").AddComponent<Story>();
+        }
         OpenCharacterSelectionMenu();
     }
 
@@ -78,10 +90,11 @@ public class ConversationManager : MonoBehaviour
     {
         if(!isAwaitingResponse)
         {
+            string question = inputField.text;
             TextMeshProUGUI message = Instantiate(messagePrefab, scrollViewContent).GetComponent<TextMeshProUGUI>();
-            message.text = "You: " + inputField.text; 
+            message.text = "You: " + question; 
             UpdateScrollView();
-            GetResponse(message.text);           
+            GetResponse(question);           
         }
         inputField.text = "";
 
@@ -93,14 +106,29 @@ public class ConversationManager : MonoBehaviour
     {
         isAwaitingResponse = true;
 
+        Character character = null;
+        if (story != null && selectedCharacter >= 0 && selectedCharacter < story.characters.Count)
+        {
+            character = story.characters[selectedCharacter];
+        }
+
+        //ReferenceEquals because Story currently creates characters with "new",
+        //which Unity's == operator reports as null
+        bool hasCharacter = !ReferenceEquals(character, null);
+        string speaker = hasCharacter && !string.IsNullOrEmpty(character.characterName)
+            ? character.characterName
+            : "ChatGPT";
+
         TextMeshProUGUI message = Instantiate(messagePrefab, scrollViewContent).GetComponent<TextMeshProUGUI>();
-        message.text = "ChatGPT is thinking...";
+        message.text = speaker + " is thinking...";
         message.fontStyle = FontStyles.Italic;
         UpdateScrollView();
         
-        string response = await AIManager.Instance.GenerateResponse(input);
+        string response = hasCharacter
+            ? await character.sendToAI(input)
+            : await AIManager.Instance.GenerateResponse(input);
 
-        message.text = "ChatGPT: " + response;
+        message.text = speaker + ": " + response;
         message.fontStyle = FontStyles.Normal;
         UpdateScrollView();
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ class ChatCompletionRequest
 }
 
 [Serializable]
-class ChatMessage
+public class ChatMessage
 {
     public string role;
     public string content;
@@ -50,9 +51,27 @@ public class AIManager : MonoBehaviour
 {
     // VARIABLES ==========================================================
     #region Variables and Instance
-    public static AIManager Instance;
+    private static AIManager instance;
+    //Finds the instance in the scene, or creates one if none exists, so AI
+    //calls work even when no AIManager object has been placed in the scene.
+    public static AIManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<AIManager>();
+                if (instance == null)
+                {
+                    instance = new GameObject("AIManager").AddComponent<AIManager>();
+                }
+            }
+            return instance;
+        }
+        private set { instance = value; }
+    }
 
-    [SerializeField] private string model;
+    [SerializeField] private string model = "gpt-4o-mini";
 
     private string apiKey;
 
@@ -106,8 +125,12 @@ public class AIManager : MonoBehaviour
     #region Generate Response
     public async Task<string> GenerateResponse(string input)
     {
-        ChatMessage[] messages = {new ChatMessage("user", input)};
-        ChatCompletionRequest requestBody = new ChatCompletionRequest(model, messages);
+        return await GenerateResponse(new List<ChatMessage> {new ChatMessage("user", input)});
+    }
+
+    public async Task<string> GenerateResponse(List<ChatMessage> messages)
+    {
+        ChatCompletionRequest requestBody = new ChatCompletionRequest(model, messages.ToArray());
 
         string json = JsonUtility.ToJson(requestBody);
         byte[] body = Encoding.UTF8.GetBytes(json);
