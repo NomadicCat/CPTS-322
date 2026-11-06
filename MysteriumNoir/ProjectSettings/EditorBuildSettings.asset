@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Master/Scenes/level-conversation.unity
     guid: f8be84bcf4ce772438afd233fd322ddf
+  - enabled: 1
+    path: Assets/Master/Scenes/level-investigation.unity
+    guid: 5fd5dbe49f6a95545ab580ad0859d4df
   m_configObjects: {}

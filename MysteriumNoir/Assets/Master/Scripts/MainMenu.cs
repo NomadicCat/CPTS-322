@@ -5,12 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private string gameScene;
+    [SerializeField] private string investigationScene;
+    [SerializeField] private string interrogationScene;
 
     public void StartGame()
     {
         Debug.Log("Starting game...");
-        SceneManager.LoadScene(gameScene);
+    }
+
+    public void StartInvestigation()
+    {
+        SceneManager.LoadScene(investigationScene);
+    }
+
+    public void StartInterrogation()
+    {
+        SceneManager.LoadScene(interrogationScene);
     }
 
     public void GoToSettings()

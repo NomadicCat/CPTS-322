@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerMovementType
 {
@@ -33,6 +34,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float teleportSpeed;
     
     [Header("Object Interaction")]
+    [SerializeField] private float objectRotationSpeed;
+    [SerializeField] private float objectMoveSpeed;
+    [SerializeField] private float objectScaleSpeed;
     [SerializeField] private float interactionDistance;
     [SerializeField] private LayerMask whatIsObject;
 
@@ -41,6 +45,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform cameraAnchor;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Transform orientation;
+    [SerializeField] private Transform objectHolder;
     [SerializeField] private Rigidbody rb;
 
     [Header("UI")]
@@ -54,6 +59,7 @@ public class Player : MonoBehaviour
     private Vector3 moveVector;
     private Vector3 moveDirection;
     private MovementNode targetNode;
+    private InteractableObject heldObject;
     #endregion
 
     private void Start()
@@ -69,16 +75,26 @@ public class Player : MonoBehaviour
         message.text = "";
         moveCounter.text = "Moves Remaining: " + moveCount;
 
+        if(Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("menu-main");
+        }
+
         // CAMERA ===============================================================================
         #region Camera
 
         // camera look
-        lookX += Input.GetAxis("Mouse X") * PlayerPrefs.GetFloat("sensitivity", lookSpeed);
-        lookY -= Input.GetAxis("Mouse Y") * PlayerPrefs.GetFloat("sensitivity", lookSpeed);
-        lookY = Mathf.Clamp(lookY, -90, 90);
+        if(heldObject == null)
+        {
+            lookX += Input.GetAxis("Mouse X") * PlayerPrefs.GetFloat("sensitivity", lookSpeed);
+            lookY -= Input.GetAxis("Mouse Y") * PlayerPrefs.GetFloat("sensitivity", lookSpeed);
+            lookY = Mathf.Clamp(lookY, -90, 90);
 
-        cameraHolder.transform.localRotation = Quaternion.Euler(new Vector3(lookY, lookX, 0));
-        orientation.localRotation = Quaternion.Euler(new Vector3(0, lookX, 0));
+            cameraHolder.transform.localRotation = Quaternion.Euler(new Vector3(lookY, lookX, 0));
+            orientation.localRotation = Quaternion.Euler(new Vector3(0, lookX, 0));            
+        }
 
         cameraHolder.position = cameraAnchor.position;
 
@@ -137,14 +153,43 @@ public class Player : MonoBehaviour
         // INTERACTION ============================================================================
         #region Interaction
 
+        // release object
+        bool hasPutDownObject = false;
+        if(heldObject != null && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            heldObject.PutDown();
+            heldObject = null;
+            hasPutDownObject = true;
+        }
+
+        // pickup object
         RaycastHit objectHit;
         if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out objectHit, interactionDistance, whatIsObject, QueryTriggerInteraction.Collide))
         {
-            if(objectHit.collider.tag == "Object")
+            if(objectHit.collider.tag == "Object" && heldObject == null)
             {
                 message.text = "Click To Inspect";
+
+                if(Input.GetKeyDown(KeyCode.Mouse0) && heldObject == null && !hasPutDownObject)
+                {
+                    InteractableObject targetObject = objectHit.collider.GetComponent<InteractableObject>();
+                    if(targetObject != null)
+                    {
+                        heldObject = targetObject;
+                        heldObject.PickUp();
+                    }
+                }
             }
         }        
+
+        // inspect object
+        if(heldObject != null)
+        {
+            heldObject.transform.position = Vector3.Lerp(heldObject.transform.position, objectHolder.position, Time.deltaTime * objectMoveSpeed);
+
+            heldObject.transform.Rotate(cameraTransform.up, -Input.GetAxis("Mouse X") * objectRotationSpeed, Space.World);
+            heldObject.transform.Rotate(cameraTransform.right, Input.GetAxis("Mouse Y") * objectRotationSpeed, Space.World);
+        }
 
         #endregion
 
