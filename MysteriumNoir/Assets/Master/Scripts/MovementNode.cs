@@ -22,16 +22,23 @@ public class MovementNode : MonoBehaviour
         }
     }
 
+    public void LeaveNode()
+    {
+        DisableNearby();
+        Enable();
+    }
+
+    public void EnterNode()
+    {
+        EnableNearby();
+        Disable();
+    }
+
     public void Enable()
     {
         trigger.enabled = true;
         particles.Play();
-        sprite.SetActive(true);
-
-        foreach(MovementNode node in nearbyNodes)
-        {
-            node.Disable();
-        } 
+        sprite.SetActive(true); 
     }
 
     public void Disable()
@@ -48,5 +55,13 @@ public class MovementNode : MonoBehaviour
         {
             node.Enable();
         }          
+    }
+
+    public void DisableNearby()
+    {
+        foreach(MovementNode node in nearbyNodes)
+        {
+            node.Disable();
+        }            
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveAcceleration;
 
     [Header("Point And Click Movement")]
-    [SerializeField] private int maxMoveCount;
+    [SerializeField] private int startingMoveCount;
     [SerializeField] private float teleportSpeed;
     
     [Header("Object Interaction")]
@@ -42,6 +43,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform orientation;
     [SerializeField] private Rigidbody rb;
 
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI moveCounter;
+    [SerializeField] private TextMeshProUGUI message;
+
     private int moveCount;
     private float lookX;
     private float lookY;
@@ -53,12 +58,17 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        moveCount = startingMoveCount;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     private void Update()
     {
+        message.text = "";
+        moveCounter.text = "Moves Remaining: " + moveCount;
+
         // CAMERA ===============================================================================
         #region Camera
 
@@ -94,19 +104,23 @@ public class Player : MonoBehaviour
         // point and click movement
         if(movementType == PlayerMovementType.PointAndClick)
         {
-            if(Input.GetKey(KeyCode.Mouse0))
+            RaycastHit nodeHit;
+            if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out nodeHit, Mathf.Infinity, whatIsObject, QueryTriggerInteraction.Collide))
             {
-                RaycastHit hit;
-                if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, whatIsObject, QueryTriggerInteraction.Collide))
+                if(nodeHit.collider.tag == "MovementNode")
                 {
-                    if(hit.collider.tag == "MovementNode")
-                    {
-                        MovementNode movementNode = hit.collider.GetComponent<MovementNode>();
+                    message.text = "Click To Move";
+
+                    if(Input.GetKeyDown(KeyCode.Mouse0))
+                    {       
+                        MovementNode movementNode = nodeHit.collider.GetComponent<MovementNode>();
                         if(movementNode != null)
                         {
-                            movementNode.Disable();
-                            movementNode.EnableNearby();
+                            if(targetNode != null) targetNode.LeaveNode();
                             targetNode = movementNode;
+                            targetNode.EnterNode();
+
+                            moveCount--;
                         }
                     }
                 }
@@ -117,6 +131,20 @@ public class Player : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, targetNode.transform.position, Time.deltaTime * teleportSpeed);
             }
         }
+
+        #endregion
+
+        // INTERACTION ============================================================================
+        #region Interaction
+
+        RaycastHit objectHit;
+        if(Physics.Raycast(cameraTransform.position, cameraTransform.forward, out objectHit, interactionDistance, whatIsObject, QueryTriggerInteraction.Collide))
+        {
+            if(objectHit.collider.tag == "Object")
+            {
+                message.text = "Click To Inspect";
+            }
+        }        
 
         #endregion
 
