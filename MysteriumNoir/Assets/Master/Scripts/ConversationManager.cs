@@ -112,9 +112,7 @@ public class ConversationManager : MonoBehaviour
             character = story.characters[selectedCharacter];
         }
 
-        //ReferenceEquals because Story currently creates characters with "new",
-        //which Unity's == operator reports as null
-        bool hasCharacter = !ReferenceEquals(character, null);
+        bool hasCharacter = character != null;
         string speaker = hasCharacter && !string.IsNullOrEmpty(character.characterName)
             ? character.characterName
             : "ChatGPT";
@@ -125,7 +123,7 @@ public class ConversationManager : MonoBehaviour
         UpdateScrollView();
         
         string response = hasCharacter
-            ? await character.sendToAI(input)
+            ? await character.AnswerDetective(input)
             : await AIManager.Instance.GenerateResponse(input);
 
         message.text = speaker + ": " + response;
