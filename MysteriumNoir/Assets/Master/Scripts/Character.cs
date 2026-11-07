@@ -35,11 +35,15 @@ public class Character : MonoBehaviour
 
 
 
-    //public GameObject characterJumble;
+
+    [SerializeField] private CharacterJumble portrait;
+    public int faceSeed;
     
     
     public void Start()
     {
+        faceSeed = portrait.GenerateFaceSeed();
+        portrait.Generate(faceSeed);
         trust = 0;
         pessimism = Random.Range(0f, 1f);
         fear = Random.Range(0f, 1f);

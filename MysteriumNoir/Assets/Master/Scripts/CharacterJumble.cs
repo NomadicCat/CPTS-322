@@ -146,6 +146,12 @@ public class CharacterJumble : MonoBehaviour
         Place("Hair", hair, recipe.hair, recipe.hair, false);
     }
 
+    //generate a random seed for the face, which can be used to generate a consistent face across sessions
+    public int GenerateFaceSeed()
+    {
+        return Random.Range(0, int.MaxValue);
+    }
+
     // Shortcut: roll and draw in one step
     public FaceRecipe Generate(int seed)
     {
