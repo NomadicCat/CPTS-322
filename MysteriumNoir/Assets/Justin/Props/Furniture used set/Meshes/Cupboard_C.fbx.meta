@@ -1,0 +1,257 @@
+fileFormatVersion: 2
+guid: 1b4c484e60e5bb644b04c52a7ba782da
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: b_low.025
+    100004: b_low.026
+    100006: b_low.027
+    100008: b_low.028
+    100010: b_low.029
+    100012: b_low.030
+    100014: b_low.031
+    100016: b_low.032
+    100018: b_low.033
+    100020: b_low.034
+    100022: b_low.035
+    100024: b_low.036
+    100026: b_low.037
+    100028: b_low.038
+    100030: b_low.039
+    100032: b_low.040
+    100034: b_low.041
+    100036: b_low.042
+    100038: b_low.043
+    100040: b_low.045
+    100042: b_low.046
+    100044: b_low.047
+    100046: b_low.048
+    100048: b_low.053
+    100050: b_low.054
+    100052: b_low.012
+    100054: b_low.013
+    100056: b_low.024
+    400000: //RootNode
+    400002: b_low.025
+    400004: b_low.026
+    400006: b_low.027
+    400008: b_low.028
+    400010: b_low.029
+    400012: b_low.030
+    400014: b_low.031
+    400016: b_low.032
+    400018: b_low.033
+    400020: b_low.034
+    400022: b_low.035
+    400024: b_low.036
+    400026: b_low.037
+    400028: b_low.038
+    400030: b_low.039
+    400032: b_low.040
+    400034: b_low.041
+    400036: b_low.042
+    400038: b_low.043
+    400040: b_low.045
+    400042: b_low.046
+    400044: b_low.047
+    400046: b_low.048
+    400048: b_low.053
+    400050: b_low.054
+    400052: b_low.012
+    400054: b_low.013
+    400056: b_low.024
+    2100000: gloss
+    2100002: 1
+    2100004: 2_norm
+    2100006: dsp
+    2300000: b_low.025
+    2300002: b_low.026
+    2300004: b_low.027
+    2300006: b_low.028
+    2300008: b_low.029
+    2300010: b_low.030
+    2300012: b_low.031
+    2300014: b_low.032
+    2300016: b_low.033
+    2300018: b_low.034
+    2300020: b_low.035
+    2300022: b_low.036
+    2300024: b_low.037
+    2300026: b_low.038
+    2300028: b_low.039
+    2300030: b_low.040
+    2300032: b_low.041
+    2300034: b_low.042
+    2300036: b_low.043
+    2300038: b_low.045
+    2300040: b_low.046
+    2300042: b_low.047
+    2300044: b_low.048
+    2300046: b_low.053
+    2300048: b_low.054
+    2300050: b_low.012
+    2300052: b_low.013
+    2300054: b_low.024
+    3300000: b_low.025
+    3300002: b_low.026
+    3300004: b_low.027
+    3300006: b_low.028
+    3300008: b_low.029
+    3300010: b_low.030
+    3300012: b_low.031
+    3300014: b_low.032
+    3300016: b_low.033
+    3300018: b_low.034
+    3300020: b_low.035
+    3300022: b_low.036
+    3300024: b_low.037
+    3300026: b_low.038
+    3300028: b_low.039
+    3300030: b_low.040
+    3300032: b_low.041
+    3300034: b_low.042
+    3300036: b_low.043
+    3300038: b_low.045
+    3300040: b_low.046
+    3300042: b_low.047
+    3300044: b_low.048
+    3300046: b_low.053
+    3300048: b_low.054
+    3300050: b_low.012
+    3300052: b_low.013
+    3300054: b_low.024
+    4300000: b_low.054
+    4300002: b_low.053
+    4300004: b_low.048
+    4300006: b_low.047
+    4300008: b_low.046
+    4300010: b_low.045
+    4300012: b_low.043
+    4300014: b_low.042
+    4300016: b_low.041
+    4300018: b_low.040
+    4300020: b_low.039
+    4300022: b_low.038
+    4300024: b_low.037
+    4300026: b_low.036
+    4300028: b_low.035
+    4300030: b_low.034
+    4300032: b_low.033
+    4300034: b_low.032
+    4300036: b_low.031
+    4300038: b_low.030
+    4300040: b_low.029
+    4300042: b_low.028
+    4300044: b_low.027
+    4300046: b_low.026
+    4300048: b_low.025
+    4300050: b_low.024
+    4300052: b_low.013
+    4300054: b_low.012
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1
+    second: {fileID: 2100000, guid: 095ece050f5b56a42927c33dedbb4600, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 2_norm
+    second: {fileID: 2100000, guid: 7563d9ea46baa2e4e8100da6a5095db6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dsp
+    second: {fileID: 2100000, guid: f52a8cda72f80d04c947ee8f9a36e553, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gloss
+    second: {fileID: 2100000, guid: cf39eca0fe7697348b88118825f3be75, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

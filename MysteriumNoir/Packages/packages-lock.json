@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.tripolygon.umodeler-x": {
+      "version": "file:../UModelerXPackages/com.tripolygon.umodeler-x-1.4.1+f1.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "9.2.0",
       "depth": 1,
