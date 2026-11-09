@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723841256a477d84b9f2292d1b08b88d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  investigationScene: level-investigation
+  investigationScene: Appartments
   interrogationScene: level-conversation
 --- !u!1 &824044463
 GameObject:

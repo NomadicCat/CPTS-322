@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Master/Scenes/level-investigation.unity
     guid: 5fd5dbe49f6a95545ab580ad0859d4df
+  - enabled: 1
+    path: Assets/Justin/Scene/Appartments.unity
+    guid: 35059ab154d553e45ad07d2c7b7bace2
   m_configObjects: {}
