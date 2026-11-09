@@ -186,6 +186,7 @@ RectTransform:
   - {fileID: 3669958682515636248}
   - {fileID: 3617271869565306451}
   - {fileID: 9214171733353624738}
+  - {fileID: 1428712120884868131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -207,42 +208,89 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head:
     options:
-    - {fileID: 21300000, guid: 5ddd1e3b2c6bf97489ce0bdbf1353daa, type: 3}
-    maxOffset: {x: 3, y: 3}
-    maxRotation: 3
-    scaleRange: {x: 0.95, y: 1.05}
+    - {fileID: 21300000, guid: 71fcbf486bbc9d6469bcc6f4f4048647, type: 3}
+    maxOffset: {x: 0, y: 0}
+    maxRotation: 0
+    scaleRange: {x: 1, y: 1}
   eyes:
     options:
-    - {fileID: 21300000, guid: f00ef09c5ceb6b7488fc89cba8bb1409, type: 3}
-    maxOffset: {x: 6, y: 5}
-    maxRotation: 10
-    scaleRange: {x: 0.85, y: 1.15}
+    - {fileID: 21300000, guid: be7bad517d40761438c61e74047ac32a, type: 3}
+    - {fileID: 21300000, guid: 5c7da94571a18c342b57ff24ebc8dbf8, type: 3}
+    maxOffset: {x: 0, y: 0}
+    maxRotation: 0
+    scaleRange: {x: 1, y: 1}
     matchPair: 1
     mirrorRight: 1
   brows:
     options:
-    - {fileID: 21300000, guid: 6735b41b6e34dd9478dc9c5cf848ae57, type: 3}
-    maxOffset: {x: 8, y: 6}
-    maxRotation: 8
-    scaleRange: {x: 0.9, y: 1.15}
+    - {fileID: 21300000, guid: a328b0eaeda05c542b4427d43b81f28e, type: 3}
+    - {fileID: 21300000, guid: 0fae684e75f15174298d7704cd41d7b1, type: 3}
+    maxOffset: {x: 0, y: 0}
+    maxRotation: 0
+    scaleRange: {x: 1, y: 1}
   nose:
     options:
-    - {fileID: 21300000, guid: a8c662e56a1f6504b8608f7402d723d4, type: 3}
-    maxOffset: {x: 8, y: 6}
-    maxRotation: 8
-    scaleRange: {x: 0.9, y: 1.15}
+    - {fileID: 21300000, guid: 0f59bccd3d882804090346b9df02d209, type: 3}
+    - {fileID: 21300000, guid: 0bde6762e44b8fd40b1ac3b3a7d20ca0, type: 3}
+    maxOffset: {x: 0, y: 0}
+    maxRotation: 0
+    scaleRange: {x: 1, y: 1}
   mouth:
     options:
-    - {fileID: 21300000, guid: a263724266da72248a29c0026fcb5677, type: 3}
-    maxOffset: {x: 8, y: 6}
-    maxRotation: 8
-    scaleRange: {x: 0.9, y: 1.15}
+    - {fileID: 21300000, guid: dff6f8228ccceb74aa0b186553d84c7c, type: 3}
+    - {fileID: 21300000, guid: b13b7c11035b22f48b0cae771e8da552, type: 3}
+    maxOffset: {x: 0, y: 0}
+    maxRotation: 0
+    scaleRange: {x: 1, y: 1}
   hair:
     options:
-    - {fileID: 21300000, guid: 61ee295f5cfcb484396e8f606693e378, type: 3}
-    maxOffset: {x: 6, y: 4}
-    maxRotation: 6
-    scaleRange: {x: 0.95, y: 1.1}
+    - {fileID: 21300000, guid: eab304ab3e7da3d4a96f1594b9f802d6, type: 3}
+    - {fileID: 21300000, guid: db3a885c3e6bb6b4aa0d44cb79418a89, type: 3}
+    maxOffset: {x: 0, y: 0}
+    maxRotation: 0
+    scaleRange: {x: 1, y: 1}
+  outfit:
+    options:
+    - {fileID: 21300000, guid: 8ef2be6f1f324704f8632fa928422bbc, type: 3}
+    - {fileID: 21300000, guid: 74d0114eed742594593f006c48209d37, type: 3}
+    maxOffset: {x: 0, y: 0}
+    maxRotation: 0
+    scaleRange: {x: 1, y: 1}
+--- !u!1 &4575715805272745343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1428712120884868131}
+  m_Layer: 5
+  m_Name: Outfit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1428712120884868131
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575715805272745343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6128202205967376015}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5673651505332188037
 GameObject:
   m_ObjectHideFlags: 0

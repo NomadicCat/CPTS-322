@@ -178,13 +178,18 @@ MonoBehaviour:
   trust: 0
   pessimism: 0
   fear: 0
+  stress: 0
   backStory: 
   AIArchetype: 
   keyInfo: []
+  relationships: []
+  vantagePoint: 
   job: 
   isKiller: 0
   actualStory: 
   portrait: {fileID: 2024247091}
+  faceSeed: 0
+  memory: []
 --- !u!1001 &891297766
 PrefabInstance:
   m_ObjectHideFlags: 0

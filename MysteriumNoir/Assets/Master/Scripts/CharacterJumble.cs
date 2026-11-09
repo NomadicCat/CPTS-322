@@ -48,7 +48,7 @@ public class FacePart
 [System.Serializable]
 public class FaceRecipe
 {
-    public FacePart head, leftEye, rightEye, brows, nose, mouth, hair;
+    public FacePart head, leftEye, rightEye, brows, nose, mouth, hair, outfit;
 }
 
 // Put this on the Portrait object. It finds the
@@ -62,6 +62,7 @@ public class CharacterJumble : MonoBehaviour
     public FaceSlot nose  = new FaceSlot(new Vector2(8f, 6f), 8f, new Vector2(0.9f, 1.15f));
     public FaceSlot mouth = new FaceSlot(new Vector2(8f, 6f), 8f, new Vector2(0.9f, 1.15f));
     public FaceSlot hair  = new FaceSlot(new Vector2(6f, 4f), 6f, new Vector2(0.95f, 1.1f));
+    public FaceSlot outfit  = new FaceSlot(new Vector2(6f, 4f), 6f, new Vector2(0.95f, 1.1f));
 
     // A child Image and the position you placed it at in the editor
     class Piece
@@ -81,7 +82,7 @@ public class CharacterJumble : MonoBehaviour
     {
         if (pieces != null) return;
         pieces = new Dictionary<string, Piece>();
-        foreach (string childName in new[] { "Head", "LeftEye", "RightEye", "Brows", "Nose", "Mouth", "Hair" })
+        foreach (string childName in new[] { "Head", "LeftEye", "RightEye", "Brows", "Nose", "Mouth", "Hair", "Outfit" })
         {
             Transform child = transform.Find(childName);
             if (child == null)
@@ -114,6 +115,7 @@ public class CharacterJumble : MonoBehaviour
             nose     = RollPart(rng),
             mouth    = RollPart(rng),
             hair     = RollPart(rng),
+            outfit   = RollPart(rng),
         };
     }
 
@@ -144,12 +146,7 @@ public class CharacterJumble : MonoBehaviour
         Place("Nose", nose, recipe.nose, recipe.nose, false);
         Place("Mouth", mouth, recipe.mouth, recipe.mouth, false);
         Place("Hair", hair, recipe.hair, recipe.hair, false);
-    }
-
-    //generate a random seed for the face, which can be used to generate a consistent face across sessions
-    public int GenerateFaceSeed()
-    {
-        return Random.Range(0, int.MaxValue);
+        Place("Outfit", outfit, recipe.outfit, recipe.outfit, false);
     }
 
     // Shortcut: roll and draw in one step

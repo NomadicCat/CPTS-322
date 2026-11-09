@@ -15,8 +15,8 @@ public class ConversationManager : MonoBehaviour
     [SerializeField] private GameObject conversationMenu;
 
     [Header("Portraits")]
-    [SerializeField] private Image portraitImage;
-    [SerializeField] private Sprite[] portraits;
+    [SerializeField] private List<CharacterJumble> selectionPortraits = new List<CharacterJumble>();
+    [SerializeField] private CharacterJumble conversationPortrait;
 
     [Header("Conversation")]
     [SerializeField] private Transform scrollViewContent;
@@ -64,6 +64,21 @@ public class ConversationManager : MonoBehaviour
     {
         selectionMenu.SetActive(true);
         conversationMenu.SetActive(false);
+
+        for(int i = 0; i < selectionPortraits.Count; i++)
+        {
+            if (i < story.characters.Count)
+            {
+                Character character = story.characters[i];
+                selectionPortraits[i].Generate(character.faceSeed);
+                //selectionPortraits[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                //selectionPortraits[i].gameObject.SetActive(false);
+            }
+        }
+
         for(int i = scrollViewContent.childCount - 1; i >= 0; i--)
         {
             Destroy(scrollViewContent.GetChild(i).gameObject);
@@ -77,7 +92,8 @@ public class ConversationManager : MonoBehaviour
         conversationMenu.SetActive(true);
 
         selectedCharacter = selection;
-        portraitImage.sprite = portraits[selectedCharacter];
+        Character character = story.characters[selectedCharacter];
+        conversationPortrait.Generate(character.faceSeed);
 
         inputField.ActivateInputField();
         inputField.Select();

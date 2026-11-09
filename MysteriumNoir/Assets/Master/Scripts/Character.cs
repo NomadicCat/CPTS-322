@@ -42,6 +42,7 @@ public class Character : MonoBehaviour
     public string job;
     public bool isKiller;
     public string actualStory;
+    public int faceSeed;
     #endregion
 
     #region memberFunctions
@@ -130,8 +131,6 @@ public class Character : MonoBehaviour
     }
 
 
-    [SerializeField] private CharacterJumble portrait;
-    public int faceSeed;
     
     public List<ChatMessage> memory = new List<ChatMessage>();
 
@@ -192,8 +191,6 @@ public class Character : MonoBehaviour
     //knowledge and backstory once the story exists.
     private void Awake()
     {
-        faceSeed = portrait.GenerateFaceSeed();
-        portrait.Generate(faceSeed);
         trust = 0;
         pessimism = Random.Range(0f, 1f);
         fear = Random.Range(0f, 1f);
@@ -217,6 +214,7 @@ public class Character : MonoBehaviour
         job = PickUniqueJob();
         singleWordPersonality = personalities[Random.Range(0, personalities.Length)];
         vantagePoint = PickUniqueVantagePoint();
+        faceSeed = Random.Range(0, int.MaxValue);
 
         SyncGameObjectName();
         BuildAIArchetype();
